@@ -1,0 +1,3 @@
+class PlayButtonManager {
+  play() => null;
+}

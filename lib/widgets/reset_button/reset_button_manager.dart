@@ -1,0 +1,3 @@
+class ResetButtonManager {
+  reset() => null;
+}

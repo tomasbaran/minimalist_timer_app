@@ -1,0 +1,3 @@
+class PauseButtonManager {
+  pause() => null;
+}
