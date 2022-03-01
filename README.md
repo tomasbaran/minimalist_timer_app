@@ -1,7 +1,7 @@
 # Minimalist State Management Architecture
 
-Structured a bit differently than the author Suragch of the [minimalist state management.](https://suragch.medium.com/flutter-state-management-for-minimalists-4c71a2f2f0c1)
-
+Structured a bit differently from the Minimalist State Management author's [example](https://github.com/suragch/minimalist_state_management_timer_app)
+.
 ## Authors structure
 
 ## This repository structure
