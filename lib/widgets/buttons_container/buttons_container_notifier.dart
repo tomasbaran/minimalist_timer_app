@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:minimalist_timer_app/utils/constants.dart';
 
 enum ButtonsState {
   initial,
@@ -8,5 +9,5 @@ enum ButtonsState {
 }
 
 class ButtonsContainerNotifier extends ValueNotifier<ButtonsState> {
-  ButtonsContainerNotifier() : super(ButtonsState.initial);
+  ButtonsContainerNotifier() : super(mkDefaultButtonsState);
 }

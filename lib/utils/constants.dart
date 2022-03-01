@@ -1,9 +1,12 @@
+import 'package:minimalist_timer_app/widgets/buttons_container/buttons_container_notifier.dart';
+
 // mk: My constants
 
-// general app settings
+// default app settings
 const Duration mkDefaultTimer = Duration(seconds: 10);
+const ButtonsState mkDefaultButtonsState = ButtonsState.initial;
 
-// app constants
+// keys
 const String timeLeftKey = 'time_left';
 const String buttonsStateKey = 'buttons_state';
 
