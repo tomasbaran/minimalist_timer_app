@@ -13,10 +13,15 @@ class TimerContainerNotifier extends ValueNotifier<String> {
   int _secondsLeft = ParseService().durationToSeconds(mkDefaultTimer);
   bool _isPaused = false;
 
+  updateTimer(int newSecondsLeft) {
+    _secondsLeft = newSecondsLeft;
+    value = ParseService().secondsToTimerFormat(newSecondsLeft);
+  }
+
   countDownUntilZero(Timer _localTimer) {
     final _buttonsNotifier = getIt<ButtonsContainerNotifier>();
-    _secondsLeft--;
-    value = ParseService().secondsToTimerFormat(_secondsLeft);
+    updateTimer(_secondsLeft - 1);
+
     if (_secondsLeft == 0) {
       _localTimer.cancel();
       _buttonsNotifier.value = ButtonsState.finished;
@@ -39,5 +44,5 @@ class TimerContainerNotifier extends ValueNotifier<String> {
 
   pause() => _isPaused = true;
 
-  reset() {}
+  reset() => updateTimer(ParseService().durationToSeconds(mkDefaultTimer));
 }
