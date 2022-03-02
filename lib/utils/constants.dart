@@ -3,7 +3,7 @@ import 'package:minimalist_timer_app/widgets/buttons_container/buttons_container
 // mk: My constants
 
 // default app settings
-const Duration mkDefaultTimer = Duration(seconds: 10);
+const Duration mkDefaultTimer = Duration(seconds: 2);
 const ButtonsState mkDefaultButtonsState = ButtonsState.initial;
 
 // keys
