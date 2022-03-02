@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:minimalist_timer_app/services/parse_service.dart';
 import 'package:minimalist_timer_app/services/service_locator.dart';
+import 'package:minimalist_timer_app/services/storage_services/local_storage.dart';
 import 'package:minimalist_timer_app/utils/constants.dart';
 import 'dart:async';
 
@@ -14,17 +15,23 @@ class TimerContainerNotifier extends ValueNotifier<String> {
   int _secondsLeft = ParseService().durationToSeconds(mkDefaultTimer);
   bool _isPaused = false;
 
-  updateTimer(int newSecondsLeft) {
+  updateAndSaveTimer(int newSecondsLeft) {
     _secondsLeft = newSecondsLeft;
     value = ParseService().secondsToTimerFormat(newSecondsLeft);
+    LocalStorage().saveState(_secondsLeft, _buttonsNotifier.value);
+  }
+
+  updateAndSaveButtonsState(ButtonsState newButtonsState) {
+    _buttonsNotifier.value = ButtonsState.finished;
+    LocalStorage().saveState(_secondsLeft, _buttonsNotifier.value);
   }
 
   countDownUntilZero(Timer _localTimer) {
-    updateTimer(_secondsLeft - 1);
+    updateAndSaveTimer(_secondsLeft - 1);
 
     if (_secondsLeft == 0) {
       _localTimer.cancel();
-      _buttonsNotifier.value = ButtonsState.finished;
+      updateAndSaveButtonsState(ButtonsState.finished);
     }
   }
 
@@ -44,10 +51,11 @@ class TimerContainerNotifier extends ValueNotifier<String> {
 
   pause() => _isPaused = true;
 
-  reset() => updateTimer(ParseService().durationToSeconds(mkDefaultTimer));
+  reset() => updateAndSaveTimer(ParseService().durationToSeconds(mkDefaultTimer));
 
   cancelTimer() {
     if (_timer != null) {
+      // null-check
       _timer!.cancel();
     }
   }
