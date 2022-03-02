@@ -3,5 +3,6 @@ import 'package:minimalist_timer_app/widgets/buttons_container/buttons_container
 abstract class StorageService {
   Future<Duration> getTimeLeft();
   Future<ButtonsState?> getButtonsState();
-  Future saveState(int secondsLeft, ButtonsState buttonsState);
+  Future saveTimeLeft(int secondsLeft);
+  Future saveButtonsState(ButtonsState buttonsState);
 }

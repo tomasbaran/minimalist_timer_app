@@ -8,8 +8,7 @@ class ResetButtonManager {
     final _buttonsNotifier = getIt<ButtonsContainerNotifier>();
 
     _timerNotifier.reset();
-    if (_buttonsNotifier.value == ButtonsState.finished) {
-      _buttonsNotifier.value = ButtonsState.initial;
-    }
+    // HANDLES: 1. timer on [ButtonsState.started] 2. tap on reset button 3. ButtonsState should NOT get changed
+    if (_buttonsNotifier.value != ButtonsState.started) _buttonsNotifier.updateAndSaveButtonsState(ButtonsState.initial);
   }
 }

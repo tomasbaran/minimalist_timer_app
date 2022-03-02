@@ -8,6 +8,6 @@ class PlayButtonManager {
     final _buttonNotifier = getIt<ButtonsContainerNotifier>();
 
     _timerNotifier.play();
-    _buttonNotifier.value = ButtonsState.started;
+    _buttonNotifier.updateAndSaveButtonsState(ButtonsState.started);
   }
 }

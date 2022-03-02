@@ -15,23 +15,23 @@ class TimerContainerNotifier extends ValueNotifier<String> {
   int _secondsLeft = ParseService().durationToSeconds(mkDefaultTimer);
   bool _isPaused = false;
 
-  updateAndSaveTimer(int newSecondsLeft) {
-    _secondsLeft = newSecondsLeft;
-    value = ParseService().secondsToTimerFormat(newSecondsLeft);
-    LocalStorage().saveState(_secondsLeft, _buttonsNotifier.value);
+  loadTimeLeft() async {
+    Duration _initTimeLeft = await LocalStorage().getTimeLeft();
+    updateAndSaveTimeLeft(ParseService().durationToSeconds(_initTimeLeft));
   }
 
-  updateAndSaveButtonsState(ButtonsState newButtonsState) {
-    _buttonsNotifier.value = ButtonsState.finished;
-    LocalStorage().saveState(_secondsLeft, _buttonsNotifier.value);
+  updateAndSaveTimeLeft(int newSecondsLeft) {
+    _secondsLeft = newSecondsLeft;
+    value = ParseService().secondsToTimerFormat(newSecondsLeft);
+    LocalStorage().saveTimeLeft(_secondsLeft);
   }
 
   countDownUntilZero(Timer _localTimer) {
-    updateAndSaveTimer(_secondsLeft - 1);
+    updateAndSaveTimeLeft(_secondsLeft - 1);
 
     if (_secondsLeft == 0) {
       _localTimer.cancel();
-      updateAndSaveButtonsState(ButtonsState.finished);
+      _buttonsNotifier.updateAndSaveButtonsState(ButtonsState.finished);
     }
   }
 
@@ -51,12 +51,7 @@ class TimerContainerNotifier extends ValueNotifier<String> {
 
   pause() => _isPaused = true;
 
-  reset() => updateAndSaveTimer(ParseService().durationToSeconds(mkDefaultTimer));
-
-  loadTimer() async {
-    Duration _initTimeLeft = await LocalStorage().getTimeLeft();
-    updateAndSaveTimer(ParseService().durationToSeconds(_initTimeLeft));
-  }
+  reset() => updateAndSaveTimeLeft(ParseService().durationToSeconds(mkDefaultTimer));
 
   cancelTimer() {
     if (_timer != null) {

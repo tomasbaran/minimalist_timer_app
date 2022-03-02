@@ -24,7 +24,6 @@ class LocalStorage extends StorageService {
       }
     } catch (e) {
       throw 'buttonsState not retrieved from the local storage: $e';
-      return mkDefaultButtonsState;
     }
   }
 
@@ -42,10 +41,19 @@ class LocalStorage extends StorageService {
   }
 
   @override
-  Future saveState(int secondsLeft, ButtonsState buttonsState) async {
+  Future saveTimeLeft(int secondsLeft) async {
     try {
       final prefs = await SharedPreferences.getInstance();
       prefs.setInt(timeLeftKey, secondsLeft);
+    } catch (e) {
+      throw 'Was not able to save to local storage: $e';
+    }
+  }
+
+  @override
+  Future saveButtonsState(ButtonsState buttonsState) async {
+    try {
+      final prefs = await SharedPreferences.getInstance();
       prefs.setString(buttonsStateKey, buttonsState.toString());
     } catch (e) {
       throw 'Was not able to save to local storage: $e';

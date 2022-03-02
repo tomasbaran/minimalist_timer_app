@@ -14,5 +14,11 @@ class ButtonsContainerNotifier extends ValueNotifier<ButtonsState> {
 
   loadButtonsState() async {
     value = await LocalStorage().getButtonsState() ?? mkDefaultButtonsState;
+    updateAndSaveButtonsState(value);
+  }
+
+  updateAndSaveButtonsState(ButtonsState newButtonsState) {
+    value = newButtonsState;
+    LocalStorage().saveButtonsState(newButtonsState);
   }
 }

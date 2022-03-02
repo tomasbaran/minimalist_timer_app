@@ -1,7 +1,6 @@
 import 'package:get_it/get_it.dart';
 import 'package:minimalist_timer_app/widgets/buttons_container/buttons_container_notifier.dart';
 import 'package:minimalist_timer_app/widgets/timer_container/timer_container_manager.dart';
-import 'package:minimalist_timer_app/services/timer_service.dart';
 import 'package:minimalist_timer_app/widgets/buttons_container/buttons_container_manager.dart';
 import 'package:minimalist_timer_app/widgets/pause_button/pause_button_manager.dart';
 import 'package:minimalist_timer_app/widgets/play_button/play_button_manager.dart';

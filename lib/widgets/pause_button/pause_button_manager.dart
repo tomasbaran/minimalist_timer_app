@@ -8,6 +8,6 @@ class PauseButtonManager {
     final _buttonsNotifier = getIt<ButtonsContainerNotifier>();
 
     _timerNotifier.pause();
-    _buttonsNotifier.value = ButtonsState.paused;
+    _buttonsNotifier.updateAndSaveButtonsState(ButtonsState.paused);
   }
 }
