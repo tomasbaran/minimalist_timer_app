@@ -9,6 +9,7 @@ import 'package:minimalist_timer_app/widgets/buttons_container/buttons_container
 class TimerContainerNotifier extends ValueNotifier<String> {
   TimerContainerNotifier() : super(ParseService().durationToTimerFormat(mkDefaultTimer));
 
+  final _buttonsNotifier = getIt<ButtonsContainerNotifier>();
   Timer? _timer;
   int _secondsLeft = ParseService().durationToSeconds(mkDefaultTimer);
   bool _isPaused = false;
@@ -19,7 +20,6 @@ class TimerContainerNotifier extends ValueNotifier<String> {
   }
 
   countDownUntilZero(Timer _localTimer) {
-    final _buttonsNotifier = getIt<ButtonsContainerNotifier>();
     updateTimer(_secondsLeft - 1);
 
     if (_secondsLeft == 0) {

@@ -8,6 +8,8 @@ class ResetButtonManager {
     final _buttonsNotifier = getIt<ButtonsContainerNotifier>();
 
     _timerNotifier.reset();
-    _buttonsNotifier.value = ButtonsState.initial;
+    if (_buttonsNotifier.value == ButtonsState.finished) {
+      _buttonsNotifier.value = ButtonsState.initial;
+    }
   }
 }
