@@ -11,10 +11,11 @@ import 'package:minimalist_timer_app/widgets/timer_container/timer_container_not
 final getIt = GetIt.instance;
 void setupGetIt() {
   getIt.registerLazySingleton<ButtonsContainerManager>(() => ButtonsContainerManager());
-  getIt.registerLazySingleton<ButtonsContainerNotifier>(() => ButtonsContainerNotifier());
   getIt.registerLazySingleton<PlayButtonManager>(() => PlayButtonManager());
   getIt.registerLazySingleton<ResetButtonManager>(() => ResetButtonManager());
   getIt.registerLazySingleton<PauseButtonManager>(() => PauseButtonManager());
   getIt.registerLazySingleton<TimerContainerManager>(() => TimerContainerManager());
+
   getIt.registerLazySingleton<TimerContainerNotifier>(() => TimerContainerNotifier());
+  getIt.registerLazySingleton<ButtonsContainerNotifier>(() => ButtonsContainerNotifier());
 }

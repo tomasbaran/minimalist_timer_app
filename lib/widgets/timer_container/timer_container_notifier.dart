@@ -4,4 +4,10 @@ import 'package:minimalist_timer_app/utils/constants.dart';
 
 class TimerContainerNotifier extends ValueNotifier<String> {
   TimerContainerNotifier() : super(ParseService().durationToTimerFormat(mkDefaultTimer));
+
+  play() {}
+
+  pause() {}
+
+  reset() {}
 }
