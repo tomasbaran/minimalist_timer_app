@@ -52,6 +52,7 @@ class _ButtonsContainerState extends State<ButtonsContainer> {
     return ValueListenableBuilder<ButtonsState>(
         valueListenable: _widgetController.buttonsNotifier,
         builder: (_, _buttonsState, __) {
+          print('buttonsState: $_buttonsState');
           return Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: buttonsChildren(_buttonsState),

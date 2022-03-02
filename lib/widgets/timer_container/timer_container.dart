@@ -29,6 +29,7 @@ class _TimerContainerState extends State<TimerContainer> {
     return ValueListenableBuilder<String>(
         valueListenable: _widgetController.timerNotifier,
         builder: (_, timer, __) {
+          print('timer: $timer');
           return Text(
             timer,
             style: const TextStyle(fontSize: 70, fontWeight: FontWeight.w700),
