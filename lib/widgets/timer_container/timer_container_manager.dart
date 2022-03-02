@@ -12,5 +12,5 @@ class TimerContainerManager {
     timerNotifier.value = ParseService().durationToTimerFormat(_initTimeLeft);
   }
 
-  dispose() => null;
+  dispose() => timerNotifier.cancelTimer();
 }

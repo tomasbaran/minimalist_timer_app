@@ -45,4 +45,10 @@ class TimerContainerNotifier extends ValueNotifier<String> {
   pause() => _isPaused = true;
 
   reset() => updateTimer(ParseService().durationToSeconds(mkDefaultTimer));
+
+  cancelTimer() {
+    if (_timer != null) {
+      _timer!.cancel();
+    }
+  }
 }
