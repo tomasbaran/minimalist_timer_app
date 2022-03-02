@@ -5,5 +5,6 @@ import 'package:minimalist_timer_app/widgets/buttons_container/buttons_container
 
 class ButtonsContainerManager {
   final buttonsNotifier = getIt<ButtonsContainerNotifier>();
-  init() async => buttonsNotifier.value = await LocalStorage().getButtonsState() ?? mkDefaultButtonsState;
+
+  init() => buttonsNotifier.loadButtonsState();
 }

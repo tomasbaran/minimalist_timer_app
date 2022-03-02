@@ -7,10 +7,7 @@ import 'package:minimalist_timer_app/widgets/timer_container/timer_container_not
 class TimerContainerManager {
   final timerNotifier = getIt<TimerContainerNotifier>();
 
-  init() async {
-    Duration _initTimeLeft = await LocalStorage().getTimeLeft();
-    timerNotifier.value = ParseService().durationToTimerFormat(_initTimeLeft);
-  }
+  init() => timerNotifier.loadTimer();
 
   dispose() => timerNotifier.cancelTimer();
 }

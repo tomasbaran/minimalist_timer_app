@@ -53,6 +53,11 @@ class TimerContainerNotifier extends ValueNotifier<String> {
 
   reset() => updateAndSaveTimer(ParseService().durationToSeconds(mkDefaultTimer));
 
+  loadTimer() async {
+    Duration _initTimeLeft = await LocalStorage().getTimeLeft();
+    updateAndSaveTimer(ParseService().durationToSeconds(_initTimeLeft));
+  }
+
   cancelTimer() {
     if (_timer != null) {
       // null-check
