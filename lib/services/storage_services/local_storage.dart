@@ -26,6 +26,6 @@ class LocalStorage extends StorageService {
   @override
   Future saveState(Duration timeLeft, ButtonsState buttonsState) {
     // TODO: implement saveState
-    throw UnimplementedError();
+    throw 'Was not able to save to local storage.';
   }
 }
