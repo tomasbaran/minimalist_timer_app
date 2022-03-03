@@ -1,4 +1,5 @@
 import 'package:get_it/get_it.dart';
+import 'package:minimalist_timer_app/services/timer_service.dart';
 import 'package:minimalist_timer_app/widgets/buttons_container/buttons_container_notifier.dart';
 import 'package:minimalist_timer_app/widgets/timer_container/timer_container_manager.dart';
 import 'package:minimalist_timer_app/widgets/buttons_container/buttons_container_manager.dart';
@@ -15,6 +16,7 @@ void setupGetIt() {
   getIt.registerFactory<PauseButtonManager>(() => PauseButtonManager());
   getIt.registerFactory<TimerContainerManager>(() => TimerContainerManager());
 
+  getIt.registerLazySingleton<TimerService>(() => TimerService());
   getIt.registerLazySingleton<TimerContainerNotifier>(() => TimerContainerNotifier());
   getIt.registerLazySingleton<ButtonsContainerNotifier>(() => ButtonsContainerNotifier());
 }
