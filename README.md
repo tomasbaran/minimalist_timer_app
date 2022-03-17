@@ -1,4 +1,6 @@
 # Minimalist State Management Architecture
+![Simulator Screen Shot - iPhone 13 Pro Max - 2022-02-19 at 17 11 38](https://user-images.githubusercontent.com/25743901/158730273-3d21d630-14d4-4b44-b3b2-514bc06b9083.png)
+
 
 Minimalist State Management possible structures:
 
